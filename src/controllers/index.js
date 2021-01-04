@@ -8,7 +8,7 @@ const switchBtn = [
 
 let switchState = [false, false, false, false];
 let roomsNames = [
-    "LivingRoom",
+    "Living Room",
     "Kitchen",
     "Bedroom",
     "Garage",
