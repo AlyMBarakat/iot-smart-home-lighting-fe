@@ -1,0 +1,162 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+	background-color: #010101;
+    color: #eae6e5;
+	font: normal 16px Arial, Helvetica, Sans-serif;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6em;
+	margin: 0;
+}
+
+mark.green {
+    color:#03bd42;
+    font-weight:bold;
+    background: none;
+}
+
+#main-header{
+    color: #eae6e5;
+    text-align: center;
+}
+
+#main-footer{
+    color: #03bd42;
+    text-align: center;
+}
+
+
+.container-1{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.container{
+	width: 80%;
+	margin:auto;
+	overflow: hidden;
+}
+
+.category h3{
+ 	text-align: center;
+}
+
+
+.box-1{
+	background-color: #040404;
+	color: #eae6e5;
+
+    background-image: url('Black\ lights.jpg');
+    
+	background-position: center right;	
+
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px; 
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+.form {
+    margin: 0 auto;
+    width: 210px;
+}
+
+.form label{
+    display: block;
+    text-align: right;
+    float: right;
+    /* padding: 5%; */
+} 
+
+.form title{
+    display: block;
+    text-align: right;
+    float: left;
+    padding: 5%
+}
+
+.form input{
+  display: block;
+  text-align: left;
+  float: right;
+}
+
+
+
+
+.switch {
+    position:relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch div {
+    display: block;
+    text-align: right;
+    float: left;
+}
+
+.switch input {
+    text-align: right;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    float: right;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2c302e;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #eae6e5;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #03bd42;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #03bd42;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
