@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/styles.css" />
+</head>
+
+
+<body>
+    <header id="main-header">
+        <div class="container">
+            <title>Smart Home Lighting </title>
+            <h1><mark class="green">IOT</mark> Smart Home Lighting</h1>
+        </div>
+    </header>
+    <section>
+        <div class="box-1">
+            <p>
+                This website allows you to turn on and off lighting in diffrent rooms of your house, the light bulbs are
+                wired to <mark class="green">ESP8086</mark> that is connected to the <mark class="green">Internet</mark>
+                through the house
+                WiFi<mark class="green">.</mark>
+                <mark class="green">MQTT</mark> protocol is used for communication<mark class="green">.</mark>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="container-1">
+            <hr>
+            <div class="category">
+                <div class="form">
+                    <h3>SWITCH ON<mark class="green">/</mark>OFF</h3>
+                    <title>Living Room Light</title>
+                    <label class="switch">
+                        <input type="checkbox" id="livingRoom">
+                        <span class="slider round"></span>
+                    </label>
+                    <title>Kitchen Light</title>
+                    <label class="switch">
+                        <input type="checkbox" id="kitchen">
+                        <span class="slider round"></span>
+                    </label>
+                    <title>Bedroom Light</title>
+                    <label class="switch">
+                        <input type="checkbox" id="bedroom">
+                        <span class="slider round"></span>
+                    </label>
+                    <title>Garage Light</title>
+                    <label class="switch">
+                        <input type="checkbox" id="garage">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+    <footer id="main-footer">
+        <div class="container-1">
+            <h5>This IoT project is part of Advanced Networks course. &copyAAST-2021</h3>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript">
+    </script>
+    <script src="./javascripts/index.js"></script>
+
+</body>
+
+</html>
