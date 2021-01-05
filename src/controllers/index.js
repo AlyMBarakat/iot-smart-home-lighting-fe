@@ -1,4 +1,3 @@
-// const switchBtn = document.querySelector("input");
 const switchBtn = [
     document.getElementById("livingRoom"),
     document.getElementById("kitchen"),
@@ -14,6 +13,21 @@ let roomsNames = [
     "Garage",
 ]
 
+/*
+*
+*
+*   MQTT Event handelrs
+*
+*/
+
+
+
+/*
+*
+*
+*   Switch buttons handlers
+*
+*/
 switchBtn[0].addEventListener('click', () => {
     if (switchState[0])
         switchState[0] = false;
