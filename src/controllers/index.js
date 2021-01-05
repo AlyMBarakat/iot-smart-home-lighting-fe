@@ -19,7 +19,34 @@ let roomsNames = [
 *   MQTT Event handelrs
 *
 */
+var mqtt;
+var reconnectTimeout = 2000;
+var host = "localhost"; //change this
+var port = 8080;
 
+function onConnect() {
+    // Once a connection has been made, make a subscription and send a message.
+
+    console.log("Connected ");
+    // mqtt.subscribe("sensor1");
+    message = new Paho.MQTT.Message("Hello World");
+    message.destinationName = "sensor1";
+    mqtt.send(message);
+}
+function MQTTconnect() {
+    console.log("connecting to " + host + " " + port);
+    mqtt = new Paho.MQTT.Client(host, port, "web_client");
+    //document.write("connecting to "+ host);
+    var options = {
+        timeout: 3,
+        onSuccess: onConnect,
+
+    };
+
+    mqtt.connect(options); //connect
+}
+
+MQTTconnect();
 
 
 /*
