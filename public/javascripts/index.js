@@ -4,37 +4,35 @@ const switchBtn = [
     document.getElementById("bedroom"),
     document.getElementById("garage"),
 ];
-
 let switchState = [false, false, false, false];
 let roomsNames = [
     "Living Room",
     "Kitchen",
     "Bedroom",
     "Garage",
-]
+];
 
 /*
-*
 *
 *   MQTT Event handelrs
 *
 */
-var mqtt;
-var reconnectTimeout = 2000;
+let mqtt;
+let reconnectTimeout = 2000;
 // connect to 
-// var host = "iot-smart-home-broker.herokuapp.com/"; //change this
-// var port = 80;
+// let host = "iot-smart-home-broker.herokuapp.com/"; //change this
+// let port = 80;
 
 // connect to hive mqtt broker 
-var host = "broker.mqttdashboard.com"; //change this
-var port = 8000;
+let host = "broker.mqttdashboard.com"; //change this
+let port = 8000;
 
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("Connected ");
     // mqtt.subscribe("sensor1");
-    message = new Paho.MQTT.Message("k%# @^!@ men el world wide web");
-    message.destinationName = "test/MQTTclient/isWorking";
+    message = new Paho.MQTT.Message("Greetings from web client");
+    message.destinationName = "home-listen";
     mqtt.send(message);
 }
 function MQTTconnect() {
@@ -53,15 +51,20 @@ MQTTconnect();
 
 /*
 *
-*
 *   Switch buttons handlers
 *
 */
 switchBtn[0].addEventListener('click', () => {
-    if (switchState[0])
-        switchState[0] = false;
-    else
-        switchState[0] = true;
+    switchState[0] = !switchState[0];
+
+    if (switchState[0]) {
+        message = new Paho.MQTT.Message("on");
+    }
+    else {
+        message = new Paho.MQTT.Message("off");
+    }
+    message.destinationName = "home/livingRoom/lighting";
+    mqtt.send(message);
 
     if (!window.Notification) return;
     try {
