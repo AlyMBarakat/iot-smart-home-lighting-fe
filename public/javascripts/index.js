@@ -6,7 +6,7 @@ const switchBtn = [
 ];
 let switchState = [false, false, false, false];
 let roomsNames = [
-    "Living Room",
+    "Living-Room",
     "Kitchen",
     "Bedroom",
     "Garage",
@@ -62,43 +62,25 @@ MQTTconnect();
 */
 switchBtn[livingRoomNumber].addEventListener('click', () => {
     switchState[livingRoomNumber] = !switchState[livingRoomNumber];
-
-    if (switchState[livingRoomNumber]) {
-        message = new Paho.MQTT.Message("on");
-    }
-    else {
-        message = new Paho.MQTT.Message("off");
-    }
-    message.destinationName = "home/livingRoom/lighting";
-    mqtt.send(message);
-
+    sendLightStateMessage(livingRoomNumber);
     pushNotification(livingRoomNumber);
 });
 
 switchBtn[kitchenNumber].addEventListener('click', () => {
-    if (switchState[kitchenNumber])
-        switchState[kitchenNumber] = false;
-    else
-        switchState[kitchenNumber] = true;
-
+    switchState[kitchenNumber] = !switchState[kitchenNumber];
+    sendLightStateMessage(kitchenNumber)
     pushNotification(kitchenNumber);
 });
 
 switchBtn[bedroomNumber].addEventListener('click', () => {
-    if (switchState[bedroomNumber])
-        switchState[bedroomNumber] = false;
-    else
-        switchState[bedroomNumber] = true;
-
+    switchState[bedroomNumber] = !switchState[bedroomNumber];
+    sendLightStateMessage(bedroomNumber)
     pushNotification(bedroomNumber);
 });
 
 switchBtn[garageNumber].addEventListener('click', () => {
-    if (switchState[garageNumber])
-        switchState[garageNumber] = false;
-    else
-        switchState[garageNumber] = true;
-
+    switchState[garageNumber] = !switchState[garageNumber];
+    sendLightStateMessage(garageNumber)
     pushNotification(garageNumber);
 });
 
@@ -132,4 +114,16 @@ function pushNotification(roomNumber) {
             throw error;
         }
     }
+}
+
+function sendLightStateMessage(roomNumber) {
+    if (switchState[roomNumber]) {
+        message = new Paho.MQTT.Message("on");
+    }
+    else {
+        message = new Paho.MQTT.Message("off");
+    }
+    console.log("home/" + roomsNames[roomNumber] + "/lighting");
+    message.destinationName = "home/" + roomsNames[roomNumber] + "/lighting";
+    mqtt.send(message);
 }
