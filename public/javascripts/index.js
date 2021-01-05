@@ -66,17 +66,7 @@ switchBtn[0].addEventListener('click', () => {
     message.destinationName = "home/livingRoom/lighting";
     mqtt.send(message);
 
-    if (!window.Notification) return;
-    try {
-        Notification.requestPermission()
-            .then(permission => showNotification(permission, 0))
-    } catch (error) {
-        if (error instanceof TypeError) {
-            Notification.requestPermission(permission => showNotification(permission, 0));
-        } else {
-            throw error;
-        }
-    }
+    pushNotification(0);
 });
 
 switchBtn[1].addEventListener('click', () => {
@@ -85,17 +75,7 @@ switchBtn[1].addEventListener('click', () => {
     else
         switchState[1] = true;
 
-    if (!window.Notification) return;
-    try {
-        Notification.requestPermission()
-            .then(permission => showNotification(permission, 1))
-    } catch (error) {
-        if (error instanceof TypeError) {
-            Notification.requestPermission(permission => showNotification(permission, 1));
-        } else {
-            throw error;
-        }
-    }
+    pushNotification(1);
 });
 
 switchBtn[2].addEventListener('click', () => {
@@ -104,17 +84,7 @@ switchBtn[2].addEventListener('click', () => {
     else
         switchState[2] = true;
 
-    if (!window.Notification) return;
-    try {
-        Notification.requestPermission()
-            .then(permission => showNotification(permission, 2))
-    } catch (error) {
-        if (error instanceof TypeError) {
-            Notification.requestPermission(permission => showNotification(permission, 2));
-        } else {
-            throw error;
-        }
-    }
+    pushNotification(2);
 });
 
 switchBtn[3].addEventListener('click', () => {
@@ -123,18 +93,10 @@ switchBtn[3].addEventListener('click', () => {
     else
         switchState[3] = true;
 
-    if (!window.Notification) return;
-    try {
-        Notification.requestPermission()
-            .then(permission => showNotification(permission, 3))
-    } catch (error) {
-        if (error instanceof TypeError) {
-            Notification.requestPermission(permission => showNotification(permission, 3));
-        } else {
-            throw error;
-        }
-    }
+    pushNotification(3);
 });
+
+
 
 function showNotification(permission, roomNumber) {
     if (permission !== 'granted')
@@ -149,5 +111,19 @@ function showNotification(permission, roomNumber) {
         let notification = new Notification('Smart Home app', {
             body: roomsNames[roomNumber] + " light is OFF",
         });
+    }
+}
+
+function pushNotification(roomNumber) {
+    if (!window.Notification) return;
+    try {
+        Notification.requestPermission()
+            .then(permission => showNotification(permission, roomNames))
+    } catch (error) {
+        if (error instanceof TypeError) {
+            Notification.requestPermission(permission => showNotification(permission, roomNumber));
+        } else {
+            throw error;
+        }
     }
 }
