@@ -12,6 +12,12 @@ let roomsNames = [
     "Garage",
 ];
 
+const livingRoomNumber = 0;
+const kitchenNumber = 1;
+const bedroomNumber = 2;
+const garageNumber = 3;
+
+
 /*
 *
 *   MQTT Event handelrs
@@ -54,10 +60,10 @@ MQTTconnect();
 *   Switch buttons handlers
 *
 */
-switchBtn[0].addEventListener('click', () => {
-    switchState[0] = !switchState[0];
+switchBtn[livingRoomNumber].addEventListener('click', () => {
+    switchState[livingRoomNumber] = !switchState[livingRoomNumber];
 
-    if (switchState[0]) {
+    if (switchState[livingRoomNumber]) {
         message = new Paho.MQTT.Message("on");
     }
     else {
@@ -66,34 +72,34 @@ switchBtn[0].addEventListener('click', () => {
     message.destinationName = "home/livingRoom/lighting";
     mqtt.send(message);
 
-    pushNotification(0);
+    pushNotification(livingRoomNumber);
 });
 
-switchBtn[1].addEventListener('click', () => {
-    if (switchState[1])
-        switchState[1] = false;
+switchBtn[kitchenNumber].addEventListener('click', () => {
+    if (switchState[kitchenNumber])
+        switchState[kitchenNumber] = false;
     else
-        switchState[1] = true;
+        switchState[kitchenNumber] = true;
 
-    pushNotification(1);
+    pushNotification(kitchenNumber);
 });
 
-switchBtn[2].addEventListener('click', () => {
-    if (switchState[2])
-        switchState[2] = false;
+switchBtn[bedroomNumber].addEventListener('click', () => {
+    if (switchState[bedroomNumber])
+        switchState[bedroomNumber] = false;
     else
-        switchState[2] = true;
+        switchState[bedroomNumber] = true;
 
-    pushNotification(2);
+    pushNotification(bedroomNumber);
 });
 
-switchBtn[3].addEventListener('click', () => {
-    if (switchState[3])
-        switchState[3] = false;
+switchBtn[garageNumber].addEventListener('click', () => {
+    if (switchState[garageNumber])
+        switchState[garageNumber] = false;
     else
-        switchState[3] = true;
+        switchState[garageNumber] = true;
 
-    pushNotification(3);
+    pushNotification(garageNumber);
 });
 
 
