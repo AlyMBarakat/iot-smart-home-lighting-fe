@@ -21,8 +21,8 @@ let roomsNames = [
 */
 var mqtt;
 var reconnectTimeout = 2000;
-var host = "localhost"; //change this
-var port = 8080;
+var host = "iot-smart-home-broker.herokuapp.com/"; //change this
+var port = 80;
 
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
@@ -30,7 +30,7 @@ function onConnect() {
     console.log("Connected ");
     // mqtt.subscribe("sensor1");
     message = new Paho.MQTT.Message("Hello World");
-    message.destinationName = "sensor1";
+    message.destinationName = "test/MQTTclient/isWorking";
     mqtt.send(message);
 }
 function MQTTconnect() {
