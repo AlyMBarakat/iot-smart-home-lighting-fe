@@ -20,12 +20,12 @@ const garageNumber = 3;
 
 /*
 *
-*   MQTT Event handelrs
+*   MQTT broker connection
 *
 */
 let mqtt;
 let reconnectTimeout = 2000;
-// connect to 
+// connect to heroku broker
 // let host = "iot-smart-home-broker.herokuapp.com/"; //change this
 // let port = 80;
 
