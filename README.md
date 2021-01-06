@@ -13,5 +13,5 @@ Hardware repo: https://github.com/xNebulaa/iot-smart-home-lighting-HW
 To install dependencies
 
 ### `npm start`
-To run the express application locally./
+To run the express application locally.\
 Go to [http://localhost:3000](http://localhost:3000) to view it on the browser.
