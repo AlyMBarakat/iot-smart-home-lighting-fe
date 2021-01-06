@@ -1,22 +1,25 @@
+// Rooms numbers
+const livingRoomNumber = 0;
+const kitchenNumber = 1;
+const bedroomNumber = 2;
+const garageNumber = 3;
+
+// Rooms switch states
+let switchState = [false, false, false, false];
+
+// DOM ELements checkobox(switches) ids
 const switchBtn = [
     document.getElementById("livingRoom"),
     document.getElementById("kitchen"),
     document.getElementById("bedroom"),
     document.getElementById("garage"),
 ];
-let switchState = [false, false, false, false];
 let roomsNames = [
-    "Living-Room",
+    "LivingRoom",
     "Kitchen",
     "Bedroom",
     "Garage",
 ];
-
-const livingRoomNumber = 0;
-const kitchenNumber = 1;
-const bedroomNumber = 2;
-const garageNumber = 3;
-
 
 /*
 *
@@ -37,12 +40,13 @@ let port = 8888;
 
 let mqtt = new Paho.MQTT.Client(host, port, "clientId");
 let reconnectTimeout = 2000;
-mqtt.onMessageArrived = onMessageArrived;
+mqtt.onMessageArrived = onSensorMessageArrived;
 
 function onConnect() {
-    // Once a connection has been made, make a subscription and send a message.
-    console.log("Connected ");
-    mqtt.subscribe("home/Garage/movement", { "onSuccess": subscribeSucessFcn });
+    // once a connection has been made, make a subscription and send a message.
+    console.log("Connected");
+    // subscribe to movement sensor topic
+    mqtt.subscribe("home/LivingRoom/movement", { onSuccess: subscribeSucessFcn });
     message = new Paho.MQTT.Message("Greetings from web client");
     message.destinationName = "home-listen";
     mqtt.send(message);
@@ -54,16 +58,6 @@ function MQTTconnect() {
         onSuccess: onConnect,
     };
     mqtt.connect(options); //connect
-}
-// called when a message arrives
-function onMessageArrived(message) {
-    switchState[garageNumber] = true;
-    if (message.payloadString === "on") {
-        document.getElementById("garage").checked = true;
-    }
-    sendLightStateMessage(garageNumber)
-    pushNotification(garageNumber);
-    console.log("onMessageArrived:" + message.payloadString);
 }
 
 function subscribeSucessFcn() {
@@ -106,6 +100,16 @@ switchBtn[garageNumber].addEventListener('click', () => {
     pushNotification(garageNumber);
 });
 
+// called when a message arrives
+function onSensorMessageArrived(message) {
+    switchState[livingRoomNumber] = true;
+    if (message.payloadString === "on") {
+        document.getElementById("livingRoom").checked = true;
+    }
+    sendLightStateMessage(livingRoomNumber)
+    pushNotification(livingRoomNumber);
+    console.log("onSensorMessageArrived:" + message.payloadString);
+}
 
 
 function showNotification(permission, roomNumber) {
