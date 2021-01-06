@@ -7,7 +7,7 @@ MQTT broker's repo: https://github.com/AlyMBarakat/iot-broker-ws-mqttStandard .\
 Hardware repo: https://github.com/xNebulaa/iot-smart-home-lighting-HW .
 
 
-## To start run
+## To start
 
 ### `npm install`
 To install dependencies
