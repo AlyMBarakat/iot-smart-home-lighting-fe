@@ -31,7 +31,7 @@ const garageNumber = 3;
 // let host = "broker.mqttdashboard.com";
 // let port = 8000;
 
-// connect to hive mqtt broker 
+// connect to digital ocean mqtt broker 
 let host = "46.101.2.154";
 let port = 8888;
 
