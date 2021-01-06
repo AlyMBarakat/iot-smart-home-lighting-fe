@@ -61,24 +61,28 @@ MQTTconnect();
 *
 */
 switchBtn[livingRoomNumber].addEventListener('click', () => {
+    // change switch state globally
     switchState[livingRoomNumber] = !switchState[livingRoomNumber];
     sendLightStateMessage(livingRoomNumber);
     pushNotification(livingRoomNumber);
 });
 
 switchBtn[kitchenNumber].addEventListener('click', () => {
+    // change switch state globally
     switchState[kitchenNumber] = !switchState[kitchenNumber];
     sendLightStateMessage(kitchenNumber)
     pushNotification(kitchenNumber);
 });
 
 switchBtn[bedroomNumber].addEventListener('click', () => {
+    // change switch state globally
     switchState[bedroomNumber] = !switchState[bedroomNumber];
     sendLightStateMessage(bedroomNumber)
     pushNotification(bedroomNumber);
 });
 
 switchBtn[garageNumber].addEventListener('click', () => {
+    // change switch state globally
     switchState[garageNumber] = !switchState[garageNumber];
     sendLightStateMessage(garageNumber)
     pushNotification(garageNumber);
