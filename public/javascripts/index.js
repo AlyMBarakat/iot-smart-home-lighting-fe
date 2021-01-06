@@ -23,8 +23,6 @@ const garageNumber = 3;
 *   MQTT broker connection
 *
 */
-let mqtt;
-let reconnectTimeout = 2000;
 // connect to heroku broker
 // let host = "iot-smart-home-broker.herokuapp.com/"; //change this
 // let port = 80;
@@ -33,23 +31,39 @@ let reconnectTimeout = 2000;
 let host = "broker.mqttdashboard.com"; //change this
 let port = 8000;
 
+let mqtt = new Paho.MQTT.Client(host, port, "clientId");
+let reconnectTimeout = 2000;
+mqtt.onMessageArrived = onMessageArrived;
+
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("Connected ");
-    // mqtt.subscribe("sensor1");
+    mqtt.subscribe("home/Garage/movement", { "onSuccess": subscribeSucessFcn });
     message = new Paho.MQTT.Message("Greetings from web client");
     message.destinationName = "home-listen";
     mqtt.send(message);
 }
 function MQTTconnect() {
     console.log("connecting to " + host + " " + port);
-    mqtt = new Paho.MQTT.Client(host, port, "web_client");
-    //document.write("connecting to "+ host);
     var options = {
         timeout: 3,
         onSuccess: onConnect,
     };
     mqtt.connect(options); //connect
+}
+// called when a message arrives
+function onMessageArrived(message) {
+    switchState[garageNumber] = true;
+    if (message.payloadString === "on") {
+        document.getElementById("garage").checked = true;
+    }
+    sendLightStateMessage(garageNumber)
+    pushNotification(garageNumber);
+    console.log("onMessageArrived:" + message.payloadString);
+}
+
+function subscribeSucessFcn() {
+    console.log("Subscribed successfully");
 }
 
 MQTTconnect();
