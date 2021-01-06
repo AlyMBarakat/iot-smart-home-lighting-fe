@@ -24,12 +24,16 @@ const garageNumber = 3;
 *
 */
 // connect to heroku broker
-// let host = "iot-smart-home-broker.herokuapp.com/"; //change this
+// let host = "iot-smart-home-broker.herokuapp.com/";
 // let port = 80;
 
 // connect to hive mqtt broker 
-let host = "broker.mqttdashboard.com"; //change this
-let port = 8000;
+// let host = "broker.mqttdashboard.com";
+// let port = 8000;
+
+// connect to hive mqtt broker 
+let host = "46.101.2.154";
+let port = 8888;
 
 let mqtt = new Paho.MQTT.Client(host, port, "clientId");
 let reconnectTimeout = 2000;
