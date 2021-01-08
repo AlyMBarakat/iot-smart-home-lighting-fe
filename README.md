@@ -5,8 +5,8 @@ SmartHome website that allows the user to toggle lighting over internet, impleme
 Project Demo video: https://www.youtube.com/watch?v=fS88JM30wFA&ab_channel=ahmednabil \
 Website: http://iot-smart-home-lighting.herokuapp.com
 
-MQTT broker's repo: https://github.com/AlyMBarakat/iot-broker-ws-mqttStandard .\
-Hardware repo: https://github.com/xNebulaa/iot-smart-home-lighting-HW .
+MQTT broker's repo: https://github.com/AlyMBarakat/iot-broker-ws-mqttStandard \
+Hardware repo: https://github.com/xNebulaa/iot-smart-home-lighting-HW 
 
 
 ## To start
